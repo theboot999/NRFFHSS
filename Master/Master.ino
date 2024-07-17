@@ -5,7 +5,7 @@
 #define CE_PIN 6                      //CE Pin connected to the NRF
 #define CS_PIN 5                      //CS Pin connected to the NRF
 #define POWER_LEVEL 0                 //0 lowest Power, 3 highest Power (Use seperate 3.3v power supply for NRF above 0)
-#define PACKET_SIZE 16                //Must match the slave packet size.  How many bytes you are maximum packing into each packet.  Useable size is 1 less than this as first byte is PacketID and Hopping information
+#define PACKET_SIZE 16                //Max 32 Bytes. Must match the slave packet size.  How many bytes you are maximum packing into each packet.  Useable size is 1 less than this as first byte is PacketID and Hopping information
 #define NUMBER_OF_SENDPACKETS 1       //Max of 3 Packets.  How many packets per frame the Master will send.  The Slave needs to have the same amount of receive packets
 #define NUMBER_OF_RECEIVE_PACKETS 2   //Max of 3 Packets.  How many packets per frame the Master will receive.  The Slave needs to have the same amoutn of send packets
 #define FRAME_RATE 50                 //Locked frame rate of the microcontroller. Must match the Slaves Framerate
