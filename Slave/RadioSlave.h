@@ -13,9 +13,6 @@
 
 class RadioSlave
 {
-public:
-
-
 private:
   static RadioSlave* handlerInstance;
 //Radio Stuff
