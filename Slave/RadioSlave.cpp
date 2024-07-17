@@ -148,7 +148,7 @@ void RadioSlave::AdvanceFrame()
 
 bool RadioSlave::IsFrameReady()
 {
-	uint32_t currentTimeStamp = micros();
+  uint32_t currentTimeStamp = micros();
   uint32_t localFrameTimeEnd = frameTimeEnd;
    
   if(isOverFlowFrame)
