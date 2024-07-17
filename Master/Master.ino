@@ -66,7 +66,7 @@ void ProcessReceived()
   }
   if(radio.IsNewPacket(PACKET2))            //Call to see if theres new values for Packet2
   {
-    float numberFloat = radio.GetPacketValue<float>(PACKET1);
-    uint32_t numberU32Bit = radio.GetPacketValue<uint32_t>(PACKET1);
+    float numberFloat = radio.GetPacketValue<float>(PACKET2);
+    uint32_t numberU32Bit = radio.GetPacketValue<uint32_t>(PACKET2);
   }
 }
