@@ -72,8 +72,8 @@ void RadioMaster::AdvanceFrame()
 }
 
 bool RadioMaster::IsFrameReady()
-{
-	uint32_t currentTimeStamp = micros();
+{ 
+  uint32_t currentTimeStamp = micros();
   uint32_t localFrameTimeEnd = frameTimeEnd;
    
   if(isOverFlowFrame)
