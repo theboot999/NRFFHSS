@@ -11,14 +11,19 @@ Frequency hopping library for 2 way communication between 2 NRF24L01 radio modul
 - Uses Micros for timing so ahould be compatible with many Microcontrollers.
 
 ## Usage
-Example sketches are included for the Master and Slave.
+Example sketches are included for the Master and Slave.  
+
+There are up to 3 individual packets that can be sent per frame.  The first byte in each packet is automatically used for the packet identification and the channel hop count.  The rest are useable.
+
+The packet identifiers are defined as PACKET1, PACKET2, PACKET3.  
+
+The following methods must be called:
 1. Init - must be called in setup
 2. WaitAndSend - must be called at the start of the loop.  It will block until the next frame is ready to start then send
 3. Receive - should be called after send
 4. AddPacketValue - adds the next value to a packet
-5. GetPacketValue - gets the next value from a packet
-
-There are up to 3 individual packets that can be sent per frame.  The first byte in each packet is automatically used for the packet identification and the channel hop count.  The rest are useable.
+5. IsNewPacket - call before getting a packetvalue
+6. GetPacketValue - gets the next value from a packet
 
 As per the example, adding information to the packet is done by AddPacketValue.  Retrieving information is done by calling GetPacketValue.  GetPacketValue must be called in the same order as AddPacketValue.
 
