@@ -23,7 +23,7 @@ There are up to 3 individual packets that can be sent per frame.  The first byte
 As per the example, adding information to the packet is done by AddPacketValue.  Retrieving information is done by calling GetPacketValue.  GetPacketValue must be called in the same order as AddPacketValue.
 
 
-## How It Works
+## How The Frequency Hopping Works
 The Master follows a fixed channel sequence, hopping forward in the sequence once every 2 frames.  It's send time is always consistently the same at the start of every frame.
 
 The Slave uses the NRF's interrupt to grab a timestamp when a packet is in its recieve buffer.  This time stamp is then synced to its internal frame clock.  The slave will always start its next frame 1/8th of a frame after the Masters frame to avoid any packet collisions.
