@@ -22,7 +22,7 @@ The following methods must be called:
 2. WaitAndSend - must be called at the start of the loop.  It will block until the next frame is ready to start then send
 3. Receive - should be called after send
 4. AddPacketValue - adds the next value to a packet
-5. IsNewPacket - call before getting a packetvalue
+5. IsNewPacket - call before getting unpacking a packet
 6. GetPacketValue - gets the next value from a packet
 
 As per the example, adding information to the packet is done by AddPacketValue.  Retrieving information is done by calling GetPacketValue.  GetPacketValue must be called in the same order as AddPacketValue.
