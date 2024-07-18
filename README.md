@@ -27,6 +27,10 @@ The following methods must be called:
 
 As per the example, adding information to the packet is done by AddPacketValue.  Retrieving information is done by calling GetPacketValue.  GetPacketValue must be called in the same order as AddPacketValue.
 
+## Use Case
+The Typical use case would be for an RC Transmitter and Receiver.  Allowing both Master and Slave to send and receive up to 3 individual packets per frame with up to 31 useable bytes per frame.
+
+If you are running the NRFS at the lowest transmit speed of 256kb/s and using 3 packets per frame be aware of the frame time.  Running at 120fps with a low transmit speed will cause the NRF to take too long to send each packet. Check for stability by calling radio.GetRecievedPacketsPerSecond.
 
 ## How The Frequency Hopping Works
 The Master follows a fixed channel sequence, hopping forward in the sequence once every 2 frames.  It's send time is always consistently the same at the start of every frame.
@@ -38,3 +42,4 @@ The Slave will adjust its overall frame time to adjust for any drift from differ
 To Sync, the slave will set itself in syncing mode. No packets will be sent from the slave while syncing.  It will itterate backwards through the channel sequence until it recieves a packet from the Master.
 
 In case of the Master turning off and on again the slave will switch to scanning mode after not receiving a packet for 120 frames.  It is very reliable at re syncing quickly.  With 50 channel hops and at 100 frames per second it typically will sync in about 250 milliseconds.
+
