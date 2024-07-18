@@ -30,7 +30,7 @@ As per the example, adding information to the packet is done by AddPacketValue. 
 ## Use Case
 The Typical use case would be for an RC Transmitter and Receiver.  Allowing both Master and Slave to send and receive up to 3 individual packets per frame with up to 31 useable bytes per frame.
 
-If you are running the NRFS at the lowest transmit speed of 256kb/s and using 3 packets per frame be aware of the frame time.  Running at 120fps with a low transmit speed will cause the NRF to take too long to send each packet. Check for stability by calling radio.GetRecievedPacketsPerSecond.
+If you are running the NRFS at the lowest transmit speed of 256kb/s and using 3 packets per frame be aware of the frame time.  Running at 120fps with a low transmit speed will cause the NRF to take too long to send each packet. Check for stability by calling GetRecievedPacketsPerSecond.
 
 ## How The Frequency Hopping Works
 The Master follows a fixed channel sequence, hopping forward in the sequence once every 2 frames.  It's send time is always consistently the same at the start of every frame.
