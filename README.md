@@ -43,3 +43,8 @@ To Sync, the slave will set itself in syncing mode. No packets will be sent from
 
 In case of the Master turning off and on again the slave will switch to scanning mode after not receiving a packet for 120 frames.  It is very reliable at re syncing quickly.  With 50 channel hops and at 100 frames per second it typically will resync in about 250 milliseconds.
 
+## Limitations
+
+Currently it uses a fixed 50 channel sequence of channels to hop through as well as fixed receive and send addresses.
+
+If there is any interest I can create a binding method, where a transmitter and reciever will bind together with a unique random channel hopping sequence and random send and recieve addresses saved to Eeprom.
