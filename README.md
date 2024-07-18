@@ -35,11 +35,11 @@ If you are running the NRFS at the lowest transmit speed of 256kb/s and using 3 
 ## How The Frequency Hopping Works
 The Master follows a fixed channel sequence, hopping forward in the sequence once every 2 frames.  It's send time is always consistently the same at the start of every frame.
 
-The Slave uses the NRF's interrupt to grab a timestamp when a packet is in its recieve buffer.  This time stamp is then synced to its internal frame clock.  The slave will always start its next frame 1/8th of a frame after the Masters frame to avoid any packet collisions.
+The Slave uses the NRF's interrupt to record a timestamp when a packet is in its recieve buffer.  This time stamp is then synced to its internal frame clock.  The slave will always start its next frame 1/8th of a frame after the Masters frame to avoid any packet collisions.
 
-The Slave will adjust its overall frame time to adjust for any drift from differences in the microcontrollers clock crystal.
+The Slave will adjust its overall frame time to adjust for any drift from differences in the microcontrollers clock crystal. This drift in microseconds can be read by calling GetDriftAdjustmentMicros.
 
 To Sync, the slave will set itself in syncing mode. No packets will be sent from the slave while syncing.  It will itterate backwards through the channel sequence until it recieves a packet from the Master.
 
-In case of the Master turning off and on again the slave will switch to scanning mode after not receiving a packet for 120 frames.  It is very reliable at re syncing quickly.  With 50 channel hops and at 100 frames per second it typically will sync in about 250 milliseconds.
+In case of the Master turning off and on again the slave will switch to scanning mode after not receiving a packet for 120 frames.  It is very reliable at re syncing quickly.  With 50 channel hops and at 100 frames per second it typically will resync in about 250 milliseconds.
 
