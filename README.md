@@ -8,7 +8,7 @@ Frequency hopping library for 2 way communication between 2 NRF24L01 radio modul
 - Timed packet sending.  No missed packets from transceivers missing incoming packets while being in Send mode
 - Includes packing and unpacking of sent and recieved packets. 
 - Uses no Ack packets. Send and forget.
-- Uses Micros for timing so ahould be compatible with many Microcontrollers.
+- Uses Micros for timing so should be compatible with many Microcontrollers.
 
 ## Usage
 Example sketches are included for the Master and Slave.  
