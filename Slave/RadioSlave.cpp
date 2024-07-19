@@ -35,7 +35,7 @@ void RadioSlave::Init(_SPI* spiPort, uint8_t pinCE, uint8_t pinCS, uint8_t pinIR
   radio.setDataRate(RF24_1MBPS);
   radio.setAutoAck(false);
   radio.setRetries(0, 0);
-  radio.setPayloadSize(packetSize);
+  radio.setPayloadSize(this->packetSize);
   radio.setChannel(channelList[currentChannelIndex]);
   radio.maskIRQ(true, true, false);
   radio.powerUp();
