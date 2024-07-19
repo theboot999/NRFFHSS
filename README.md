@@ -2,6 +2,7 @@
 
 Frequency hopping library for 2 way communication between 2 NRF24L01 radio modules.   Requires Maniacs RF24 library.  
 
+- Switches Channel every 2 frames using 50 different channels
 - Runs on a fixed preset frame rate
 - Fast initial syncing time.
 - Requires the interrupt pin on the slave device.
