@@ -33,7 +33,7 @@ void RadioMaster::Init(_SPI* spiPort, uint8_t pinCE, uint8_t PinCS, int8_t power
   radio.setDataRate(RF24_1MBPS);
   radio.setAutoAck(false);
   radio.setRetries(0, 0);
-  radio.setPayloadSize(packetSize);
+  radio.setPayloadSize(this->packetSize);
   radio.setChannel(channelList[currentChannelIndex]);
   radio.maskIRQ(true, true, false);
   radio.powerUp();
