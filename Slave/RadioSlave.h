@@ -28,7 +28,7 @@ private:
   uint8_t hopOnScanValue = 0;
   uint8_t hopOnScanCounter = 0;
   uint8_t failedCounter = 0;
-  const uint8_t failedBeforeScanning = 120;
+  const uint8_t failedBeforeScanning = 50;
 
 //Frame Timing Stuff
   uint8_t frameRate = 0;
