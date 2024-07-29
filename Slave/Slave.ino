@@ -38,13 +38,13 @@ void AddSendData()
   uint32_t numberU32Bit = 2342521;  //Useless variable we will send
   
   //Add data to Packet 1.  We can add 1 less byte than packet byte size
-  radio.AddPacketValue(PACKET1, slaveRecPerSecond);
-  radio.AddPacketValue(PACKET1, number16Bit);
-  radio.AddPacketValue(PACKET1, numberU8Bit);
+  radio.AddNextPacketValue(PACKET1, slaveRecPerSecond);
+  radio.AddNextPacketValue(PACKET1, number16Bit);
+  radio.AddNextPacketValue(PACKET1, numberU8Bit);
 
   //Add data to Packet 2.  We can add 1 less byte than packet byte size
-  radio.AddPacketValue(PACKET2, numberFloat);
-  radio.AddPacketValue(PACKET2, numberU32Bit);
+  radio.AddNextPacketValue(PACKET2, numberFloat);
+  radio.AddNextPacketValue(PACKET2, numberU32Bit);
 }
 
 void ProcessReceived()
@@ -55,9 +55,9 @@ void ProcessReceived()
 
   if(radio.IsNewPacket(PACKET1))  //Call to see if theres new values for Packet1
   {
-    int16_t  masterRecPerSecond = radio.GetPacketValue<int16_t>(PACKET1);
-    uint32_t  masterMicros = radio.GetPacketValue<uint32_t>(PACKET1);    
-    uint16_t value2 = radio.GetPacketValue<uint16_t>(PACKET1);
-    int8_t value3 = radio.GetPacketValue<int8_t>(PACKET1);
+    int16_t  masterRecPerSecond = radio.GetNextPacketValue<int16_t>(PACKET1);
+    uint32_t  masterMicros = radio.GetNextPacketValue<uint32_t>(PACKET1);    
+    uint16_t value2 = radio.GetNextPacketValue<uint16_t>(PACKET1);
+    int8_t value3 = radio.GetNextPacketValue<int8_t>(PACKET1);
   }
 }
