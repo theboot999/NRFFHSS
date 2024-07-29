@@ -12,13 +12,10 @@
 #define FRAME_RATE 50               //Locked frame rate of the microcontroller. Must match the Masters Framerate
 
 RadioSlave radio;
-int16_t masterRecPerSecond; //Useless value to store slave received per second from incoming packet
-uint32_t masterMicros;      //Useless value to store current micros from incoming packet
 
 void setup() 
 {
   Serial.begin(115200);
-
   //Init must be called first with the following defined Parameters
   radio.Init(&SPI_PORT, CE_PIN, CS_PIN, IRQ_PIN, POWER_LEVEL, PACKET_SIZE, NUMBER_OF_SENDPACKETS, NUMBER_OF_RECEIVE_PACKETS, FRAME_RATE);
 }
@@ -29,24 +26,7 @@ void loop()
   radio.Receive();        //Call this second on every Frame
   
   ProcessReceived();      //Method below to process received data
-  AddSendData();          //Method below to add Send Data
-  
-  //Serial.println(radio.GetCurrentChannel());  Print our current channel
-
-  //Print some recieved data once a second
-  if(radio.IsSecondTick())  //Method returns true once a second
-  {
-    uint16_t ourRecievedPacketsPerSecond = radio.GetRecievedPacketsPerSecond();   //Method to see how many packets we have received per second
-    int16_t currentDrift = radio.GetDriftAdjustmentMicros();                      //Method to Get current adjusted drift in micros
-    Serial.print(" Slave Rec/Sec ");
-    Serial.print(ourRecievedPacketsPerSecond);  
-    Serial.print(" Master Rec/Sec ");
-    Serial.print(masterRecPerSecond);
-    Serial.print(" Slave Drift ");
-    Serial.print(currentDrift);
-    Serial.print(" Master Micros ");
-    Serial.println(masterMicros);
-  }
+  AddSendData();          //Method below to add Send data
 }
 
 void AddSendData()
@@ -75,7 +55,9 @@ void ProcessReceived()
 
   if(radio.IsNewPacket(PACKET1))  //Call to see if theres new values for Packet1
   {
-    masterRecPerSecond = radio.GetPacketValue<int16_t>(PACKET1);
-    masterMicros = radio.GetPacketValue<uint32_t>(PACKET1);
+    int16_t  masterRecPerSecond = radio.GetPacketValue<int16_t>(PACKET1);
+    uint32_t  masterMicros = radio.GetPacketValue<uint32_t>(PACKET1);    
+    uint16_t value2 = radio.GetPacketValue<uint16_t>(PACKET1);
+    int8_t value3 = radio.GetPacketValue<int8_t>(PACKET1);
   }
 }
