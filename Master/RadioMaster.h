@@ -55,13 +55,13 @@ public:
   int16_t GetRecievedPacketsPerSecond() {return receivedPerSecond; }
   int8_t GetCurrentChannel() { return channelList[currentChannelIndex]; }
   bool IsSecondTick() {return isSecondTick; }
-  template <typename T> void AddPacketValue(uint8_t packetId, T data);
-  template <typename T> T GetPacketValue(uint8_t packetId);
+  template <typename T> void AddNextPacketValue(uint8_t packetId, T data);
+  template <typename T> T GetNextPacketValue(uint8_t packetId);
 };
 
 
 template <typename T>
-void RadioMaster::AddPacketValue(uint8_t packetId, T data) 
+void RadioMaster::AddNextPacketValue(uint8_t packetId, T data) 
 {
     size_t dataLength = sizeof(T);
     if (packetId >= MAXPACKETS) 
@@ -80,7 +80,7 @@ void RadioMaster::AddPacketValue(uint8_t packetId, T data)
 }
 
 template <typename T>
-T RadioMaster::GetPacketValue(uint8_t packetId) 
+T RadioMaster::GetNextPacketValue(uint8_t packetId) 
 {
 
     size_t dataLength = sizeof(T);
