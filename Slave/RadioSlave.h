@@ -84,13 +84,13 @@ public:
   int16_t GetDriftAdjustmentMicros() { return totalAdjustedDrift; }
   int8_t GetCurrentChannel() { return channelList[currentChannelIndex]; }
   bool IsSecondTick() {return isSecondTick; }
-  template <typename T> void AddPacketValue(uint8_t packetId, T data);
-  template <typename T> T GetPacketValue(uint8_t packetId);
+  template <typename T> void AddNextPacketValue(uint8_t packetId, T data);
+  template <typename T> T GetNextPacketValue(uint8_t packetId);
 };
 
 
 template <typename T>
-void RadioSlave::AddPacketValue(uint8_t packetId, T data) 
+void RadioSlave::AddNextPacketValue(uint8_t packetId, T data) 
 {
     size_t dataLength = sizeof(T);
 
@@ -110,7 +110,7 @@ void RadioSlave::AddPacketValue(uint8_t packetId, T data)
 }
 
 template <typename T>
-T RadioSlave::GetPacketValue(uint8_t packetId) 
+T RadioSlave::GetNextPacketValue(uint8_t packetId) 
 {
     
     size_t dataLength = sizeof(T);
