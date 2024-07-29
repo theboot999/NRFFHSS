@@ -44,10 +44,14 @@ void AddSendData()
 {
   int16_t masterRecPerSecond = radio.GetRecievedPacketsPerSecond();
   uint32_t masterMicros = micros();
+  uint16_t value2 = 5343;
+  int8_t value3 = 143;
   
   //Add data to Packet 1.  We can add 1 less byte than packet byte size
   radio.AddPacketValue(PACKET1, masterRecPerSecond);
   radio.AddPacketValue(PACKET1, masterMicros);
+  radio.AddPacketValue(PACKET1, value2);
+  radio.AddPacketValue(PACKET1, value3);
 }
 
 
